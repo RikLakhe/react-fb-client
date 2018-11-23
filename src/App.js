@@ -5,10 +5,15 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import AppNavBar from './components/layout/AppNavBar'
 import Dashboard from './components/layout/Dashboard'
 
+import { Provider } from 'react-redux';
+
+import store from './store/store';
+
 
 class App extends Component {
   render() {
     return (
+      <Provider store = {store}>
       <Router>
         <div className="App">
           <AppNavBar />
@@ -20,6 +25,7 @@ class App extends Component {
           
         </div>
       </Router>
+      </Provider>
     );
   }
 }
