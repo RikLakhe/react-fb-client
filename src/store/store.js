@@ -7,7 +7,7 @@ import { reactReduxFirebase , firebaseReducer } from 'react-redux-firebase'
 //@todo
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDzoAzz2SClw6zerv1sLmn_m_q8sKAyDwc",
+    apiKey: "",
     authDomain: "clientfire-55e12.firebaseapp.com",
     databaseURL: "https://clientfire-55e12.firebaseio.com",
     projectId: "clientfire-55e12",
