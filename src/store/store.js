@@ -7,7 +7,7 @@ import { reactReduxFirebase , firebaseReducer } from 'react-redux-firebase'
 //@todo
 
 const firebaseConfig = {
-    apiKey: "",
+    apiKey: "AIzaSyDzoAzz2SClw6zerv1sLmn_m_q8sKAyDwc",
     authDomain: "clientfire-55e12.firebaseapp.com",
     databaseURL: "https://clientfire-55e12.firebaseio.com",
     projectId: "clientfire-55e12",
@@ -23,8 +23,10 @@ const rrfConfig = {
 
 // Initialize firebase instance
 firebase.initializeApp(firebaseConfig)
-// const firestore = firebase.firestore() // <- needed if using firestore
-
+const firestore = firebase.firestore();
+  const settings = {/* your settings... */ timestampsInSnapshots: true};
+  firestore.settings(settings);
+  
 // Add reactReduxFirebase enhancer when making store creator
 const createStoreWithFirebase = compose(
   reactReduxFirebase(firebase, rrfConfig), // firebase instance as first argument
