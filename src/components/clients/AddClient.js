@@ -9,11 +9,11 @@ import { firestoreConnect } from 'react-redux-firebase'
    constructor(){
      super();
      this.state={
-       firstName:' ',
-       lastName:' ',
-       email:' ',
-       phone:' ',
-       balance:' '
+       firstName:'',
+       lastName:'',
+       email:'',
+       phone:'',
+       balance:''
 
      }
      
@@ -26,6 +26,7 @@ import { firestoreConnect } from 'react-redux-firebase'
    onSubmit=(e)=>{
     e.preventDefault();
     const newClient = this.state;
+
 
     const { firestore , history } = this.props;
 
@@ -44,6 +45,8 @@ import { firestoreConnect } from 'react-redux-firebase'
   }
 
   render() {
+    
+
     return (
       <div>
         <div className="row">
@@ -59,23 +62,23 @@ import { firestoreConnect } from 'react-redux-firebase'
           <form onSubmit = {this.onSubmit}>
             <div className="form-group">
               <label htmlFor="firstName">First Name</label>
-              <input type="text" name="firstName" id="" className="form-control" minLength="2" required  onChange={this.onChange} value = {this.state.firstName}/>
+              <input type="text" name="firstName" className="form-control" minLength="2" required  onChange={this.onChange} value = {this.state.firstName} />
             </div>
             <div className="form-group">
               <label htmlFor="lastName">Last Name</label>
-              <input type="text" name="lastName" id="" className="form-control" minLength="2" required  onChange={this.onChange} value = {this.state.lastName}/>
+              <input type="text" name="lastName"  className="form-control" minLength="2" required  onChange={this.onChange} value = {this.state.lastName} />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email</label>
-              <input type="email" name="email" id="" className="form-control" minLength="2"   onChange={this.onChange} value = {this.state.email}/>
+              <input type="email" name="email"  className="form-control" minLength="2"  required onChange={this.onChange} value = {this.state.email} />
             </div>
             <div className="form-group">
               <label htmlFor="phone">Phone Number</label>
-              <input type="text" name="phone" id="" className="form-control" minLength="10"  required onChange={this.onChange} value = {this.state.phone}/>
+              <input type="text" name="phone" className="form-control" minLength="2"  required onChange={this.onChange} value = {this.state.phone} />
             </div>
             <div className="form-group">
               <label htmlFor="balance">Balance</label>
-              <input type="text" name="balance" id="" className="form-control" minLength="2" required  onChange={this.onChange} value = {this.state.balance}/>
+              <input type="text" name="balance" className="form-control" minLength="2" required  onChange={this.onChange} value = {this.state.balance}/>
             </div>
             <input type="submit" value="submit" className="btn btn-primary btn-block"/>
           </form>
