@@ -2,6 +2,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 website to look at it is https://focused-heyrovsky-b172e7.netlify.com/
 
+User Email : test@test.com 
+Password : 123456789
+
 
 ## Available Scripts
 
