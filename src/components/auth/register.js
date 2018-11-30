@@ -42,7 +42,7 @@ class Register extends Component {
   render() {
     const {message,messageType} = this.props.notify;
     return (
-      <div classname="row">
+      <div className="row">
       <div className="col-md-6 mx-auto">
       <div className="card">
       <div className="card-body">
