@@ -1,6 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Demo : https://console.firebase.google.com/project/clientfire-55e12/hosting/main
 
+
+Demo at Netlify:
 website to look at it is https://focused-heyrovsky-b172e7.netlify.com/
+
 
 User Email : test@test.com 
 Password : 123456789
