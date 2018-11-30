@@ -31,6 +31,7 @@ class AppNavBar extends Component {
   render() {
     const { isAuth } = this.state;
     const { auth } = this.props;
+    const { allowRegistration } = this.props.settings;
 
     return (
       <nav className="navbar navbar-expand-md navbar-dark bg-primary mb-4">
@@ -48,6 +49,7 @@ class AppNavBar extends Component {
             <Link to="/" className="nav-link">
             Dashboard
             </Link>
+            
           </li>) : null}
            
             
@@ -60,11 +62,32 @@ class AppNavBar extends Component {
                 </a>
                 </li>
                 <li className="nav-item">
+                <Link to="/settings" className="nav-link">
+                <i className="fas fa-cog"></i>
+                Settings
+                </Link>
+                </li>
+                <li className="nav-item">
                 <a href="#!" className= "nav-link" onClick={this.onLogoutClick}>
+                <i className="fas fa-sign-out-alt"></i>
                 LogOut
                 </a>
                 </li>
               </ul> ): null}
+              {
+                allowRegistration && !isAuth?
+                (<ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                <Link to="/login" className="nav-link">
+                <i class="fas fa-sign-in-alt"></i>{' '} Login
+                </Link>
+                </li>
+                <li className="nav-item">
+                <Link to="/register" className="nav-link">
+                <i class="fas fa-plus-circle btn-primary"></i>{' '} Register
+                </Link>
+                </li></ul>):null
+              }
           </div>
         </div>
       </nav>
@@ -74,9 +97,11 @@ class AppNavBar extends Component {
 
 AppNavBar.propTypes = {
   firebase:PropTypes.object.isRequired,
-  auth:PropTypes.object.isRequired
+  auth:PropTypes.object.isRequired,
+  settings:PropTypes.object.isRequired
 }
 
 export default compose(firebaseConnect(),connect((state,props)=>({
-  auth:state.firebase.auth
+  auth:state.firebase.auth,
+  settings:state.settings
 })))(AppNavBar);

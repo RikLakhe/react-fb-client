@@ -7,10 +7,18 @@ import {notifyUser} from '../../actions/notifyActions';
 import Alert from '../layout/Alert'
 import React, { Component } from 'react'
 
-class Login extends Component {
+class Register extends Component {
   state={
     email:'',
     password:''
+  }
+
+  componentWillMount(){
+    const {allowRegistration} = this.props.settings;
+
+    if(!allowRegistration){
+      this.props.history.push('/');
+    }
   }
 
   onChange=(e)=>{
@@ -22,11 +30,12 @@ class Login extends Component {
     const { firebase , notifyUser } = this.props;
     const { email , password } = this.state;
 
-    firebase.login(
+    //register with firebase
+    firebase.createUser(
       {
         email,
         password
-      }).catch(err=> notifyUser('Invalid Login Credentials' , 'error'));
+      }).catch(err=> notifyUser('That User Already Exist' , 'error'));
   }
 
 
@@ -40,7 +49,7 @@ class Login extends Component {
         {message?(<Alert message = {message} messageType={messageType} />):null}
       <h1 className="text-center pb-4 pt-3">
       <span className="text-primary">
-      <i className="fas fa-lock"></i>{' '}LOGIN</span></h1>
+      <i class="fas fa-user-plus"></i>{' '}Register</span></h1>
 
       <form onSubmit = {this.onSubmit} >
       <div className="form-group">
@@ -51,7 +60,7 @@ class Login extends Component {
               <label htmlFor="password">Password</label>
               <input type="password" name="password" className="form-control"required  onChange={this.onChange} value = {this.state.password}/>
             </div>
-            <input type="submit" value="Login" className="btn btn-primary btn-block"/>
+            <input type="submit" value="Register" className="btn btn-primary btn-block"/>
       </form>
       </div>
       </div>
@@ -62,19 +71,19 @@ class Login extends Component {
   }
 }
 
-Login.propTypes = {
+Register.propTypes = {
   firebase:PropTypes.object.isRequired,
   notify:PropTypes.object.isRequired,
   notifyUser:PropTypes.func.isRequired
-
 }
 
 export default compose(
   firebaseConnect(),
   connect((state,props)=>({
-  notify:state.notify
+  notify:state.notify,
+  settings:state.settings
 }),
 {
   notifyUser
 }
-))(Login);
+))(Register);
